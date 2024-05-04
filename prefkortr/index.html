@@ -253,17 +253,30 @@ document.addEventListener('DOMContentLoaded', () => {
 </script></div>
             </div>
         </div>
-    </div><script>
+    </div>
+
+    <script>
 document.addEventListener('DOMContentLoaded', function() {
   const botoes = document.querySelectorAll('.redirecionarbt');
   botoes.forEach(function(botao) {
     botao.addEventListener('click', function() {
       setTimeout(function() {
-        window.location.href = 'saldo.html';
+        // Get current URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Build the new redirect URL with parameters
+        let newUrl = '/saldo.html';
+        if (urlParams.toString()) {
+          newUrl += '?' + urlParams.toString();
+        }
+
+        // Redirect
+        window.location.href = newUrl;
       }, 5000);
     });
   });
 });
+
 </script>
 
 
